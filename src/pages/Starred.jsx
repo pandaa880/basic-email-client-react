@@ -1,12 +1,15 @@
 import React from "react";
-import MailList from "../components/MailList";
 
-export default function Starred({ mailItems, parentLabelID }) {
+import MailList from "../components/MailList";
+import { useEmail } from "../contexts/EmailContext";
+
+export default function Starred() {
+  const { data } = useEmail();
   return (
     <div className="page">
       <h2>Starred</h2>
 
-      <MailList items={mailItems} parentLabelID={parentLabelID} />
+      <MailList items={data.Starred.emails} parentLabelID={data.Starred.name} />
     </div>
   );
 }

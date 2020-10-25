@@ -1,12 +1,15 @@
 import React from "react";
-import MailList from "../components/MailList";
 
-export default function Sent({ mailItems, parentLabelID }) {
+import MailList from "../components/MailList";
+import { useEmail } from "../contexts/EmailContext";
+
+export default function Sent() {
+  const { data } = useEmail();
   return (
     <div className="page">
       <h2>Sent</h2>
 
-      <MailList items={mailItems} parentLabelID={parentLabelID} />
+      <MailList items={data.Sent.emails} parentLabelID={data.Sent.name} />
     </div>
   );
 }

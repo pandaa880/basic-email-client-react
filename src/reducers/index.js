@@ -26,7 +26,10 @@ export function emailReducer(state, action) {
     dropObj.emails.push(dragObj);
 
     // remove from the original
-    emailLabelObj.emails.splice(emailItemIndex, 1);
+    const newEmailList = emailLabelObj.emails.filter(
+      (item) => item.id !== dragObj.id
+    );
+    emailLabelObj.emails = newEmailList;
 
     return mainData;
   }
